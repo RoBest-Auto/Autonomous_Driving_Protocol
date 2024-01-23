@@ -4,7 +4,7 @@
 
 ---
 
-    这是一份使用 proto3 语言编写的消息类型定义文件。其中包含了一些基本的消息类型，如 Header、Point、Quaternion、Pose、PoseStamped、Path、Vector3、Twist、Current_pose、Current_twist、Goal_pose、Current_path、Goal_twist 和 Multiple_goal。这些消息类型可以用于在 中台和ROS 系统之间进行通信。
+这是一份使用 proto3 语言编写的消息类型定义文件。其中包含了一些基本的消息类型，如 Header、Point、Quaternion、Pose、PoseStamped、Path、Vector3、Twist、Current_pose、Current_twist、Goal_pose、Current_path、Goal_twist 和 Multiple_goal。这些消息类型可以用于在 中台和ROS 系统之间进行通信。
 
 #### 基础数据定义
 
