@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package dispatch;
+/*  base types */
+
+// Header
+message Time
+{
+    int32 sec = 1;
+    int32 nsec = 2;
+}
+message Header {
+    Time stamp = 1;
+    string frame_id = 2;
+}
+
+// pose
+message Point {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+}
+message Quaternion {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+    double w = 4;
+}
+message Pose {
+    Point position = 1;
+    Quaternion orientation = 2;
+}
+message PoseStamped {
+    Header header = 1;
+    Pose pose = 2;
+}
+
+// path
+message Path {
+    Header header = 1;
+    repeated PoseStamped pose = 2;
+}
+
+// twist
+message Vector3 {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+}
+message Twist {
+    Vector3 linear = 1;
+    Vector3 angular = 2;
+}
+
+/* enabled data */
+// 反馈信息：当前位置
+message Current_pose {
+    Pose pose = 1;
+}
+// 反馈信息：当前速度
+message Current_twist {
+    Twist twist = 1;
+}
+// 下发信息：目标位置
+message Goal_pose {
+    Pose pose = 1;
+}
+// 反馈信息：当前路线
+message Current_path {
+    repeated Pose pose = 1;
+}
+// 下发信息：指令速度
+message Goal_twist {
+    Twist twist = 1;
+}
+// 下发信息：多目标列表
+message Multiple_goal {
+    repeated PoseStamped pose = 1;
+}
