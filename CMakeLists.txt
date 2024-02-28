@@ -1,0 +1,1 @@
+add_library(PROTO_LIB src/MQTT_Communication.pb.cc)
