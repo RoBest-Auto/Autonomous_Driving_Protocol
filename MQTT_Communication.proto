@@ -77,3 +77,29 @@ message Goal_twist {
 message Multiple_goal {
     repeated PoseStamped pose = 1;
 }
+
+//动作类型
+enum ActionType
+{
+    GoForward = 0;      //行进
+    Stop = 1;           //停车
+    Parking = 2;        //泊车
+}
+
+//执行动作
+message ActionRequest
+{
+    ActionType action_type = 1;  //动作类型
+    Current_path path = 2;      //路径
+    Goal_pose goal = 3;         //目标位置
+    uint32 park_id = 4;         //车位id
+}
+
+//执行动作响应
+message ActionResponse
+{
+    int32 error_code = 1;
+    string error_msg = 2;
+}
+
+
