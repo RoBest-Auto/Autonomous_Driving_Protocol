@@ -262,7 +262,8 @@ struct VehicleInfoDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VehicleInfoDefaultTypeInternal _VehicleInfo_default_instance_;
 PROTOBUF_CONSTEXPR ActionRequest::ActionRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.path_)*/nullptr
+    /*decltype(_impl_.header_)*/nullptr
+  , /*decltype(_impl_.path_)*/nullptr
   , /*decltype(_impl_.goal_)*/nullptr
   , /*decltype(_impl_.action_type_)*/0
   , /*decltype(_impl_.park_id_)*/0u
@@ -279,6 +280,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 PROTOBUF_CONSTEXPR ActionResponse::ActionResponse(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.error_msg_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.header_)*/nullptr
   , /*decltype(_impl_.error_code_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct ActionResponseDefaultTypeInternal {
@@ -305,6 +307,22 @@ struct TaskRequestDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TaskRequestDefaultTypeInternal _TaskRequest_default_instance_;
+PROTOBUF_CONSTEXPR TaskResult::TaskResult(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.error_msg_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.header_)*/nullptr
+  , /*decltype(_impl_.task_type_)*/0
+  , /*decltype(_impl_.error_code_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct TaskResultDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TaskResultDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TaskResultDefaultTypeInternal() {}
+  union {
+    TaskResult _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TaskResultDefaultTypeInternal _TaskResult_default_instance_;
 PROTOBUF_CONSTEXPR EmergencyBrake::EmergencyBrake(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.header_)*/nullptr
@@ -362,8 +380,8 @@ struct FaultInformationDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 FaultInformationDefaultTypeInternal _FaultInformation_default_instance_;
 }  // namespace dispatch
-static ::_pb::Metadata file_level_metadata_MQTT_5fCommunication_2eproto[24];
-static const ::_pb::EnumDescriptor* file_level_enum_descriptors_MQTT_5fCommunication_2eproto[6];
+static ::_pb::Metadata file_level_metadata_MQTT_5fCommunication_2eproto[25];
+static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_MQTT_5fCommunication_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_MQTT_5fCommunication_2eproto = nullptr;
 
 const uint32_t TableStruct_MQTT_5fCommunication_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -510,6 +528,7 @@ const uint32_t TableStruct_MQTT_5fCommunication_2eproto::offsets[] PROTOBUF_SECT
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::dispatch::ActionRequest, _impl_.header_),
   PROTOBUF_FIELD_OFFSET(::dispatch::ActionRequest, _impl_.action_type_),
   PROTOBUF_FIELD_OFFSET(::dispatch::ActionRequest, _impl_.path_),
   PROTOBUF_FIELD_OFFSET(::dispatch::ActionRequest, _impl_.goal_),
@@ -520,6 +539,7 @@ const uint32_t TableStruct_MQTT_5fCommunication_2eproto::offsets[] PROTOBUF_SECT
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::dispatch::ActionResponse, _impl_.header_),
   PROTOBUF_FIELD_OFFSET(::dispatch::ActionResponse, _impl_.error_code_),
   PROTOBUF_FIELD_OFFSET(::dispatch::ActionResponse, _impl_.error_msg_),
   ~0u,  // no _has_bits_
@@ -531,6 +551,16 @@ const uint32_t TableStruct_MQTT_5fCommunication_2eproto::offsets[] PROTOBUF_SECT
   PROTOBUF_FIELD_OFFSET(::dispatch::TaskRequest, _impl_.header_),
   PROTOBUF_FIELD_OFFSET(::dispatch::TaskRequest, _impl_.task_type_),
   PROTOBUF_FIELD_OFFSET(::dispatch::TaskRequest, _impl_.area_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::dispatch::TaskResult, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::dispatch::TaskResult, _impl_.header_),
+  PROTOBUF_FIELD_OFFSET(::dispatch::TaskResult, _impl_.task_type_),
+  PROTOBUF_FIELD_OFFSET(::dispatch::TaskResult, _impl_.error_code_),
+  PROTOBUF_FIELD_OFFSET(::dispatch::TaskResult, _impl_.error_msg_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::dispatch::EmergencyBrake, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -583,12 +613,13 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 118, -1, -1, sizeof(::dispatch::MsgHeader)},
   { 126, -1, -1, sizeof(::dispatch::VehicleInfo)},
   { 137, -1, -1, sizeof(::dispatch::ActionRequest)},
-  { 147, -1, -1, sizeof(::dispatch::ActionResponse)},
-  { 155, -1, -1, sizeof(::dispatch::TaskRequest)},
-  { 164, -1, -1, sizeof(::dispatch::EmergencyBrake)},
-  { 172, -1, -1, sizeof(::dispatch::Heartbeat)},
-  { 179, -1, -1, sizeof(::dispatch::HeartbeatACK)},
-  { 186, -1, -1, sizeof(::dispatch::FaultInformation)},
+  { 148, -1, -1, sizeof(::dispatch::ActionResponse)},
+  { 157, -1, -1, sizeof(::dispatch::TaskRequest)},
+  { 166, -1, -1, sizeof(::dispatch::TaskResult)},
+  { 176, -1, -1, sizeof(::dispatch::EmergencyBrake)},
+  { 184, -1, -1, sizeof(::dispatch::Heartbeat)},
+  { 191, -1, -1, sizeof(::dispatch::HeartbeatACK)},
+  { 198, -1, -1, sizeof(::dispatch::FaultInformation)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -612,6 +643,7 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::dispatch::_ActionRequest_default_instance_._instance,
   &::dispatch::_ActionResponse_default_instance_._instance,
   &::dispatch::_TaskRequest_default_instance_._instance,
+  &::dispatch::_TaskResult_default_instance_._instance,
   &::dispatch::_EmergencyBrake_default_instance_._instance,
   &::dispatch::_Heartbeat_default_instance_._instance,
   &::dispatch::_HeartbeatACK_default_instance_._instance,
@@ -619,71 +651,65 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 
 const char descriptor_table_protodef_MQTT_5fCommunication_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\030MQTT_Communication.proto\022\010dispatch\"!\n\004"
-  "Time\022\013\n\003sec\030\001 \001(\005\022\014\n\004nsec\030\002 \001(\005\"9\n\006Heade"
-  "r\022\035\n\005stamp\030\001 \001(\0132\016.dispatch.Time\022\020\n\010fram"
-  "e_id\030\002 \001(\t\"(\n\005Point\022\t\n\001x\030\001 \001(\001\022\t\n\001y\030\002 \001("
-  "\001\022\t\n\001z\030\003 \001(\001\"8\n\nQuaternion\022\t\n\001x\030\001 \001(\001\022\t\n"
-  "\001y\030\002 \001(\001\022\t\n\001z\030\003 \001(\001\022\t\n\001w\030\004 \001(\001\"T\n\004Pose\022!"
-  "\n\010position\030\001 \001(\0132\017.dispatch.Point\022)\n\013ori"
-  "entation\030\002 \001(\0132\024.dispatch.Quaternion\"M\n\013"
-  "PoseStamped\022 \n\006header\030\001 \001(\0132\020.dispatch.H"
-  "eader\022\034\n\004pose\030\002 \001(\0132\016.dispatch.Pose\"M\n\004P"
-  "ath\022 \n\006header\030\001 \001(\0132\020.dispatch.Header\022#\n"
-  "\004pose\030\002 \003(\0132\025.dispatch.PoseStamped\"*\n\007Ve"
-  "ctor3\022\t\n\001x\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\022\t\n\001z\030\003 \001(\001\"N"
-  "\n\005Twist\022!\n\006linear\030\001 \001(\0132\021.dispatch.Vecto"
-  "r3\022\"\n\007angular\030\002 \001(\0132\021.dispatch.Vector3\","
-  "\n\014Current_pose\022\034\n\004pose\030\001 \001(\0132\016.dispatch."
-  "Pose\"/\n\rCurrent_twist\022\036\n\005twist\030\001 \001(\0132\017.d"
-  "ispatch.Twist\")\n\tGoal_pose\022\034\n\004pose\030\001 \001(\013"
-  "2\016.dispatch.Pose\",\n\014Current_path\022\034\n\004pose"
-  "\030\001 \003(\0132\016.dispatch.Pose\",\n\nGoal_twist\022\036\n\005"
-  "twist\030\001 \001(\0132\017.dispatch.Twist\"4\n\rMultiple"
-  "_goal\022#\n\004pose\030\001 \003(\0132\025.dispatch.PoseStamp"
-  "ed\".\n\tMsgHeader\022\021\n\ttimestamp\030\001 \001(\004\022\016\n\006ms"
-  "g_id\030\002 \001(\r\"\313\001\n\013VehicleInfo\022#\n\006header\030\001 \001"
-  "(\0132\023.dispatch.MsgHeader\022\034\n\004pose\030\002 \001(\0132\016."
-  "dispatch.Pose\022\036\n\005twist\030\003 \001(\0132\017.dispatch."
-  "Twist\022,\n\006motion\030\004 \001(\0162\034.dispatch.Vehicle"
-  "MotionState\022+\n\014driving_mode\030\005 \001(\0162\025.disp"
-  "atch.DrivingMode\"\224\001\n\rActionRequest\022)\n\013ac"
-  "tion_type\030\001 \001(\0162\024.dispatch.ActionType\022$\n"
-  "\004path\030\002 \001(\0132\026.dispatch.Current_path\022!\n\004g"
-  "oal\030\003 \001(\0132\023.dispatch.Goal_pose\022\017\n\007park_i"
-  "d\030\004 \001(\r\"7\n\016ActionResponse\022\022\n\nerror_code\030"
-  "\001 \001(\005\022\021\n\terror_msg\030\002 \001(\t\"j\n\013TaskRequest\022"
-  "#\n\006header\030\001 \001(\0132\023.dispatch.MsgHeader\022%\n\t"
-  "task_type\030\002 \001(\0162\022.dispatch.TaskType\022\017\n\007a"
-  "rea_id\030\003 \001(\r\"D\n\016EmergencyBrake\022#\n\006header"
-  "\030\001 \001(\0132\023.dispatch.MsgHeader\022\r\n\005valid\030\002 \001"
-  "(\010\"0\n\tHeartbeat\022#\n\006header\030\001 \001(\0132\023.dispat"
-  "ch.MsgHeader\"3\n\014HeartbeatACK\022#\n\006header\030\001"
-  " \001(\0132\023.dispatch.MsgHeader\"\201\001\n\020FaultInfor"
-  "mation\022#\n\006header\030\001 \001(\0132\023.dispatch.MsgHea"
-  "der\022!\n\004type\030\002 \001(\0162\023.dispatch.FaultType\022\022"
-  "\n\nfault_code\030\003 \001(\r\022\021\n\tfault_str\030\004 \001(\t*2\n"
-  "\nActionType\022\r\n\tGoForward\020\000\022\010\n\004Stop\020\001\022\013\n\007"
-  "Parking\020\002*(\n\010TaskType\022\014\n\010LoadUnit\020\000\022\016\n\nU"
-  "nloadUnit\020\001*\230\001\n\017VehicleJobState\022\013\n\007Offli"
-  "ne\020\000\022\010\n\004Idle\020\001\022\022\n\016EmptyTransport\020\002\022\022\n\016He"
-  "avyTransport\020\003\022\017\n\013WaitingLoad\020\004\022\017\n\013Loadi"
-  "ngUnit\020\005\022\021\n\rWaitingUnload\020\006\022\021\n\rUnloading"
-  "Unit\020\007*V\n\013DrivingMode\022\024\n\020LocalDrivingMod"
-  "e\020\000\022\023\n\017TelecontrolMode\020\001\022\016\n\nRemoteMode\020\002"
-  "\022\014\n\010AutoMode\020\003*b\n\022VehicleMotionState\022\023\n\017"
-  "StationaryState\020\000\022\020\n\014ForwardState\020\001\022\r\n\tB"
-  "ackState\020\002\022\026\n\022UnknownMotionState\020\003*\213\001\n\tF"
-  "aultType\022\020\n\014VehicleFault\020\000\022\032\n\026Autonomous"
-  "DrivingFault\020\001\022\026\n\022RemoteDrivingFault\020\002\022\034"
-  "\n\030CommunicationSystemFault\020\003\022\032\n\026Localiza"
-  "ionSystemFault\020\004b\006proto3"
+  "\n\030MQTT_Communication.proto\022\010dispatch\032\035MQ"
+  "TT_Communication_enum.proto\"!\n\004Time\022\013\n\003s"
+  "ec\030\001 \001(\005\022\014\n\004nsec\030\002 \001(\005\"9\n\006Header\022\035\n\005stam"
+  "p\030\001 \001(\0132\016.dispatch.Time\022\020\n\010frame_id\030\002 \001("
+  "\t\"(\n\005Point\022\t\n\001x\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\022\t\n\001z\030\003 "
+  "\001(\001\"8\n\nQuaternion\022\t\n\001x\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\022"
+  "\t\n\001z\030\003 \001(\001\022\t\n\001w\030\004 \001(\001\"T\n\004Pose\022!\n\010positio"
+  "n\030\001 \001(\0132\017.dispatch.Point\022)\n\013orientation\030"
+  "\002 \001(\0132\024.dispatch.Quaternion\"M\n\013PoseStamp"
+  "ed\022 \n\006header\030\001 \001(\0132\020.dispatch.Header\022\034\n\004"
+  "pose\030\002 \001(\0132\016.dispatch.Pose\"M\n\004Path\022 \n\006he"
+  "ader\030\001 \001(\0132\020.dispatch.Header\022#\n\004pose\030\002 \003"
+  "(\0132\025.dispatch.PoseStamped\"*\n\007Vector3\022\t\n\001"
+  "x\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\022\t\n\001z\030\003 \001(\001\"N\n\005Twist\022!"
+  "\n\006linear\030\001 \001(\0132\021.dispatch.Vector3\022\"\n\007ang"
+  "ular\030\002 \001(\0132\021.dispatch.Vector3\",\n\014Current"
+  "_pose\022\034\n\004pose\030\001 \001(\0132\016.dispatch.Pose\"/\n\rC"
+  "urrent_twist\022\036\n\005twist\030\001 \001(\0132\017.dispatch.T"
+  "wist\")\n\tGoal_pose\022\034\n\004pose\030\001 \001(\0132\016.dispat"
+  "ch.Pose\",\n\014Current_path\022\034\n\004pose\030\001 \003(\0132\016."
+  "dispatch.Pose\",\n\nGoal_twist\022\036\n\005twist\030\001 \001"
+  "(\0132\017.dispatch.Twist\"4\n\rMultiple_goal\022#\n\004"
+  "pose\030\001 \003(\0132\025.dispatch.PoseStamped\".\n\tMsg"
+  "Header\022\021\n\ttimestamp\030\001 \001(\004\022\016\n\006msg_id\030\002 \001("
+  "\r\"\313\001\n\013VehicleInfo\022#\n\006header\030\001 \001(\0132\023.disp"
+  "atch.MsgHeader\022\034\n\004pose\030\002 \001(\0132\016.dispatch."
+  "Pose\022\036\n\005twist\030\003 \001(\0132\017.dispatch.Twist\022,\n\006"
+  "motion\030\004 \001(\0162\034.dispatch.VehicleMotionSta"
+  "te\022+\n\014driving_mode\030\005 \001(\0162\025.dispatch.Driv"
+  "ingMode\"\271\001\n\rActionRequest\022#\n\006header\030\001 \001("
+  "\0132\023.dispatch.MsgHeader\022)\n\013action_type\030\002 "
+  "\001(\0162\024.dispatch.ActionType\022$\n\004path\030\003 \001(\0132"
+  "\026.dispatch.Current_path\022!\n\004goal\030\004 \001(\0132\023."
+  "dispatch.Goal_pose\022\017\n\007park_id\030\005 \001(\r\"\\\n\016A"
+  "ctionResponse\022#\n\006header\030\001 \001(\0132\023.dispatch"
+  ".MsgHeader\022\022\n\nerror_code\030\002 \001(\005\022\021\n\terror_"
+  "msg\030\003 \001(\t\"j\n\013TaskRequest\022#\n\006header\030\001 \001(\013"
+  "2\023.dispatch.MsgHeader\022%\n\ttask_type\030\002 \001(\016"
+  "2\022.dispatch.TaskType\022\017\n\007area_id\030\003 \001(\r\"\177\n"
+  "\nTaskResult\022#\n\006header\030\001 \001(\0132\023.dispatch.M"
+  "sgHeader\022%\n\ttask_type\030\002 \001(\0162\022.dispatch.T"
+  "askType\022\022\n\nerror_code\030\003 \001(\005\022\021\n\terror_msg"
+  "\030\004 \001(\t\"D\n\016EmergencyBrake\022#\n\006header\030\001 \001(\013"
+  "2\023.dispatch.MsgHeader\022\r\n\005valid\030\002 \001(\010\"0\n\t"
+  "Heartbeat\022#\n\006header\030\001 \001(\0132\023.dispatch.Msg"
+  "Header\"3\n\014HeartbeatACK\022#\n\006header\030\001 \001(\0132\023"
+  ".dispatch.MsgHeader\"\201\001\n\020FaultInformation"
+  "\022#\n\006header\030\001 \001(\0132\023.dispatch.MsgHeader\022!\n"
+  "\004type\030\002 \001(\0162\023.dispatch.FaultType\022\022\n\nfaul"
+  "t_code\030\003 \001(\r\022\021\n\tfault_str\030\004 \001(\tb\006proto3"
   ;
+static const ::_pbi::DescriptorTable* const descriptor_table_MQTT_5fCommunication_2eproto_deps[1] = {
+  &::descriptor_table_MQTT_5fCommunication_5fenum_2eproto,
+};
 static ::_pbi::once_flag descriptor_table_MQTT_5fCommunication_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_MQTT_5fCommunication_2eproto = {
-    false, false, 2344, descriptor_table_protodef_MQTT_5fCommunication_2eproto,
+    false, false, 1999, descriptor_table_protodef_MQTT_5fCommunication_2eproto,
     "MQTT_Communication.proto",
-    &descriptor_table_MQTT_5fCommunication_2eproto_once, nullptr, 0, 24,
+    &descriptor_table_MQTT_5fCommunication_2eproto_once, descriptor_table_MQTT_5fCommunication_2eproto_deps, 1, 25,
     schemas, file_default_instances, TableStruct_MQTT_5fCommunication_2eproto::offsets,
     file_level_metadata_MQTT_5fCommunication_2eproto, file_level_enum_descriptors_MQTT_5fCommunication_2eproto,
     file_level_service_descriptors_MQTT_5fCommunication_2eproto,
@@ -695,104 +721,6 @@ PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_MQTT_5fC
 // Force running AddDescriptors() at dynamic initialization time.
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_MQTT_5fCommunication_2eproto(&descriptor_table_MQTT_5fCommunication_2eproto);
 namespace dispatch {
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ActionType_descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_MQTT_5fCommunication_2eproto);
-  return file_level_enum_descriptors_MQTT_5fCommunication_2eproto[0];
-}
-bool ActionType_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-      return true;
-    default:
-      return false;
-  }
-}
-
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* TaskType_descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_MQTT_5fCommunication_2eproto);
-  return file_level_enum_descriptors_MQTT_5fCommunication_2eproto[1];
-}
-bool TaskType_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-      return true;
-    default:
-      return false;
-  }
-}
-
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* VehicleJobState_descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_MQTT_5fCommunication_2eproto);
-  return file_level_enum_descriptors_MQTT_5fCommunication_2eproto[2];
-}
-bool VehicleJobState_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-    case 6:
-    case 7:
-      return true;
-    default:
-      return false;
-  }
-}
-
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* DrivingMode_descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_MQTT_5fCommunication_2eproto);
-  return file_level_enum_descriptors_MQTT_5fCommunication_2eproto[3];
-}
-bool DrivingMode_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-      return true;
-    default:
-      return false;
-  }
-}
-
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* VehicleMotionState_descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_MQTT_5fCommunication_2eproto);
-  return file_level_enum_descriptors_MQTT_5fCommunication_2eproto[4];
-}
-bool VehicleMotionState_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-      return true;
-    default:
-      return false;
-  }
-}
-
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* FaultType_descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_MQTT_5fCommunication_2eproto);
-  return file_level_enum_descriptors_MQTT_5fCommunication_2eproto[5];
-}
-bool FaultType_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-      return true;
-    default:
-      return false;
-  }
-}
-
 
 // ===================================================================
 
@@ -4740,10 +4668,15 @@ void VehicleInfo::InternalSwap(VehicleInfo* other) {
 
 class ActionRequest::_Internal {
  public:
+  static const ::dispatch::MsgHeader& header(const ActionRequest* msg);
   static const ::dispatch::Current_path& path(const ActionRequest* msg);
   static const ::dispatch::Goal_pose& goal(const ActionRequest* msg);
 };
 
+const ::dispatch::MsgHeader&
+ActionRequest::_Internal::header(const ActionRequest* msg) {
+  return *msg->_impl_.header_;
+}
 const ::dispatch::Current_path&
 ActionRequest::_Internal::path(const ActionRequest* msg) {
   return *msg->_impl_.path_;
@@ -4762,13 +4695,17 @@ ActionRequest::ActionRequest(const ActionRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   ActionRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.path_){nullptr}
+      decltype(_impl_.header_){nullptr}
+    , decltype(_impl_.path_){nullptr}
     , decltype(_impl_.goal_){nullptr}
     , decltype(_impl_.action_type_){}
     , decltype(_impl_.park_id_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_header()) {
+    _this->_impl_.header_ = new ::dispatch::MsgHeader(*from._impl_.header_);
+  }
   if (from._internal_has_path()) {
     _this->_impl_.path_ = new ::dispatch::Current_path(*from._impl_.path_);
   }
@@ -4786,7 +4723,8 @@ inline void ActionRequest::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.path_){nullptr}
+      decltype(_impl_.header_){nullptr}
+    , decltype(_impl_.path_){nullptr}
     , decltype(_impl_.goal_){nullptr}
     , decltype(_impl_.action_type_){0}
     , decltype(_impl_.park_id_){0u}
@@ -4805,6 +4743,7 @@ ActionRequest::~ActionRequest() {
 
 inline void ActionRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.header_;
   if (this != internal_default_instance()) delete _impl_.path_;
   if (this != internal_default_instance()) delete _impl_.goal_;
 }
@@ -4819,6 +4758,10 @@ void ActionRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  if (GetArenaForAllocation() == nullptr && _impl_.header_ != nullptr) {
+    delete _impl_.header_;
+  }
+  _impl_.header_ = nullptr;
   if (GetArenaForAllocation() == nullptr && _impl_.path_ != nullptr) {
     delete _impl_.path_;
   }
@@ -4839,34 +4782,42 @@ const char* ActionRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext*
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // .dispatch.ActionType action_type = 1;
+      // .dispatch.MsgHeader header = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_header(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .dispatch.ActionType action_type = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
           _internal_set_action_type(static_cast<::dispatch::ActionType>(val));
         } else
           goto handle_unusual;
         continue;
-      // .dispatch.Current_path path = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+      // .dispatch.Current_path path = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr = ctx->ParseMessage(_internal_mutable_path(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // .dispatch.Goal_pose goal = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+      // .dispatch.Goal_pose goal = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           ptr = ctx->ParseMessage(_internal_mutable_goal(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 park_id = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+      // uint32 park_id = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
           _impl_.park_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
@@ -4901,31 +4852,38 @@ uint8_t* ActionRequest::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .dispatch.ActionType action_type = 1;
+  // .dispatch.MsgHeader header = 1;
+  if (this->_internal_has_header()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::header(this),
+        _Internal::header(this).GetCachedSize(), target, stream);
+  }
+
+  // .dispatch.ActionType action_type = 2;
   if (this->_internal_action_type() != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      1, this->_internal_action_type(), target);
+      2, this->_internal_action_type(), target);
   }
 
-  // .dispatch.Current_path path = 2;
+  // .dispatch.Current_path path = 3;
   if (this->_internal_has_path()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::path(this),
+      InternalWriteMessage(3, _Internal::path(this),
         _Internal::path(this).GetCachedSize(), target, stream);
   }
 
-  // .dispatch.Goal_pose goal = 3;
+  // .dispatch.Goal_pose goal = 4;
   if (this->_internal_has_goal()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(3, _Internal::goal(this),
+      InternalWriteMessage(4, _Internal::goal(this),
         _Internal::goal(this).GetCachedSize(), target, stream);
   }
 
-  // uint32 park_id = 4;
+  // uint32 park_id = 5;
   if (this->_internal_park_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_park_id(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(5, this->_internal_park_id(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -4944,27 +4902,34 @@ size_t ActionRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .dispatch.Current_path path = 2;
+  // .dispatch.MsgHeader header = 1;
+  if (this->_internal_has_header()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.header_);
+  }
+
+  // .dispatch.Current_path path = 3;
   if (this->_internal_has_path()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.path_);
   }
 
-  // .dispatch.Goal_pose goal = 3;
+  // .dispatch.Goal_pose goal = 4;
   if (this->_internal_has_goal()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.goal_);
   }
 
-  // .dispatch.ActionType action_type = 1;
+  // .dispatch.ActionType action_type = 2;
   if (this->_internal_action_type() != 0) {
     total_size += 1 +
       ::_pbi::WireFormatLite::EnumSize(this->_internal_action_type());
   }
 
-  // uint32 park_id = 4;
+  // uint32 park_id = 5;
   if (this->_internal_park_id() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_park_id());
   }
@@ -4987,6 +4952,10 @@ void ActionRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from._internal_has_header()) {
+    _this->_internal_mutable_header()->::dispatch::MsgHeader::MergeFrom(
+        from._internal_header());
+  }
   if (from._internal_has_path()) {
     _this->_internal_mutable_path()->::dispatch::Current_path::MergeFrom(
         from._internal_path());
@@ -5021,9 +4990,9 @@ void ActionRequest::InternalSwap(ActionRequest* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ActionRequest, _impl_.park_id_)
       + sizeof(ActionRequest::_impl_.park_id_)
-      - PROTOBUF_FIELD_OFFSET(ActionRequest, _impl_.path_)>(
-          reinterpret_cast<char*>(&_impl_.path_),
-          reinterpret_cast<char*>(&other->_impl_.path_));
+      - PROTOBUF_FIELD_OFFSET(ActionRequest, _impl_.header_)>(
+          reinterpret_cast<char*>(&_impl_.header_),
+          reinterpret_cast<char*>(&other->_impl_.header_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ActionRequest::GetMetadata() const {
@@ -5036,8 +5005,13 @@ void ActionRequest::InternalSwap(ActionRequest* other) {
 
 class ActionResponse::_Internal {
  public:
+  static const ::dispatch::MsgHeader& header(const ActionResponse* msg);
 };
 
+const ::dispatch::MsgHeader&
+ActionResponse::_Internal::header(const ActionResponse* msg) {
+  return *msg->_impl_.header_;
+}
 ActionResponse::ActionResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -5049,6 +5023,7 @@ ActionResponse::ActionResponse(const ActionResponse& from)
   ActionResponse* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.error_msg_){}
+    , decltype(_impl_.header_){nullptr}
     , decltype(_impl_.error_code_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
@@ -5061,6 +5036,9 @@ ActionResponse::ActionResponse(const ActionResponse& from)
     _this->_impl_.error_msg_.Set(from._internal_error_msg(), 
       _this->GetArenaForAllocation());
   }
+  if (from._internal_has_header()) {
+    _this->_impl_.header_ = new ::dispatch::MsgHeader(*from._impl_.header_);
+  }
   _this->_impl_.error_code_ = from._impl_.error_code_;
   // @@protoc_insertion_point(copy_constructor:dispatch.ActionResponse)
 }
@@ -5071,6 +5049,7 @@ inline void ActionResponse::SharedCtor(
   (void)is_message_owned;
   new (&_impl_) Impl_{
       decltype(_impl_.error_msg_){}
+    , decltype(_impl_.header_){nullptr}
     , decltype(_impl_.error_code_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
@@ -5092,6 +5071,7 @@ ActionResponse::~ActionResponse() {
 inline void ActionResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.error_msg_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.header_;
 }
 
 void ActionResponse::SetCachedSize(int size) const {
@@ -5105,6 +5085,10 @@ void ActionResponse::Clear() {
   (void) cached_has_bits;
 
   _impl_.error_msg_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && _impl_.header_ != nullptr) {
+    delete _impl_.header_;
+  }
+  _impl_.header_ = nullptr;
   _impl_.error_code_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -5115,17 +5099,25 @@ const char* ActionResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // int32 error_code = 1;
+      // .dispatch.MsgHeader header = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_header(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 error_code = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           _impl_.error_code_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // string error_msg = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+      // string error_msg = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           auto str = _internal_mutable_error_msg();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
@@ -5162,20 +5154,27 @@ uint8_t* ActionResponse::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 error_code = 1;
-  if (this->_internal_error_code() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_error_code(), target);
+  // .dispatch.MsgHeader header = 1;
+  if (this->_internal_has_header()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::header(this),
+        _Internal::header(this).GetCachedSize(), target, stream);
   }
 
-  // string error_msg = 2;
+  // int32 error_code = 2;
+  if (this->_internal_error_code() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_error_code(), target);
+  }
+
+  // string error_msg = 3;
   if (!this->_internal_error_msg().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_error_msg().data(), static_cast<int>(this->_internal_error_msg().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "dispatch.ActionResponse.error_msg");
     target = stream->WriteStringMaybeAliased(
-        2, this->_internal_error_msg(), target);
+        3, this->_internal_error_msg(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -5194,14 +5193,21 @@ size_t ActionResponse::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string error_msg = 2;
+  // string error_msg = 3;
   if (!this->_internal_error_msg().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_error_msg());
   }
 
-  // int32 error_code = 1;
+  // .dispatch.MsgHeader header = 1;
+  if (this->_internal_has_header()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.header_);
+  }
+
+  // int32 error_code = 2;
   if (this->_internal_error_code() != 0) {
     total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_error_code());
   }
@@ -5226,6 +5232,10 @@ void ActionResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const :
 
   if (!from._internal_error_msg().empty()) {
     _this->_internal_set_error_msg(from._internal_error_msg());
+  }
+  if (from._internal_has_header()) {
+    _this->_internal_mutable_header()->::dispatch::MsgHeader::MergeFrom(
+        from._internal_header());
   }
   if (from._internal_error_code() != 0) {
     _this->_internal_set_error_code(from._internal_error_code());
@@ -5253,7 +5263,12 @@ void ActionResponse::InternalSwap(ActionResponse* other) {
       &_impl_.error_msg_, lhs_arena,
       &other->_impl_.error_msg_, rhs_arena
   );
-  swap(_impl_.error_code_, other->_impl_.error_code_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ActionResponse, _impl_.error_code_)
+      + sizeof(ActionResponse::_impl_.error_code_)
+      - PROTOBUF_FIELD_OFFSET(ActionResponse, _impl_.header_)>(
+          reinterpret_cast<char*>(&_impl_.header_),
+          reinterpret_cast<char*>(&other->_impl_.header_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ActionResponse::GetMetadata() const {
@@ -5519,6 +5534,313 @@ void TaskRequest::InternalSwap(TaskRequest* other) {
 
 // ===================================================================
 
+class TaskResult::_Internal {
+ public:
+  static const ::dispatch::MsgHeader& header(const TaskResult* msg);
+};
+
+const ::dispatch::MsgHeader&
+TaskResult::_Internal::header(const TaskResult* msg) {
+  return *msg->_impl_.header_;
+}
+TaskResult::TaskResult(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:dispatch.TaskResult)
+}
+TaskResult::TaskResult(const TaskResult& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  TaskResult* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.error_msg_){}
+    , decltype(_impl_.header_){nullptr}
+    , decltype(_impl_.task_type_){}
+    , decltype(_impl_.error_code_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.error_msg_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.error_msg_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_error_msg().empty()) {
+    _this->_impl_.error_msg_.Set(from._internal_error_msg(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_header()) {
+    _this->_impl_.header_ = new ::dispatch::MsgHeader(*from._impl_.header_);
+  }
+  ::memcpy(&_impl_.task_type_, &from._impl_.task_type_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.error_code_) -
+    reinterpret_cast<char*>(&_impl_.task_type_)) + sizeof(_impl_.error_code_));
+  // @@protoc_insertion_point(copy_constructor:dispatch.TaskResult)
+}
+
+inline void TaskResult::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.error_msg_){}
+    , decltype(_impl_.header_){nullptr}
+    , decltype(_impl_.task_type_){0}
+    , decltype(_impl_.error_code_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.error_msg_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.error_msg_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+TaskResult::~TaskResult() {
+  // @@protoc_insertion_point(destructor:dispatch.TaskResult)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void TaskResult::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.error_msg_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.header_;
+}
+
+void TaskResult::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void TaskResult::Clear() {
+// @@protoc_insertion_point(message_clear_start:dispatch.TaskResult)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.error_msg_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && _impl_.header_ != nullptr) {
+    delete _impl_.header_;
+  }
+  _impl_.header_ = nullptr;
+  ::memset(&_impl_.task_type_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.error_code_) -
+      reinterpret_cast<char*>(&_impl_.task_type_)) + sizeof(_impl_.error_code_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* TaskResult::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .dispatch.MsgHeader header = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_header(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .dispatch.TaskType task_type = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_task_type(static_cast<::dispatch::TaskType>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 error_code = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _impl_.error_code_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string error_msg = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_error_msg();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "dispatch.TaskResult.error_msg"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* TaskResult::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dispatch.TaskResult)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .dispatch.MsgHeader header = 1;
+  if (this->_internal_has_header()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::header(this),
+        _Internal::header(this).GetCachedSize(), target, stream);
+  }
+
+  // .dispatch.TaskType task_type = 2;
+  if (this->_internal_task_type() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+      2, this->_internal_task_type(), target);
+  }
+
+  // int32 error_code = 3;
+  if (this->_internal_error_code() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(3, this->_internal_error_code(), target);
+  }
+
+  // string error_msg = 4;
+  if (!this->_internal_error_msg().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_error_msg().data(), static_cast<int>(this->_internal_error_msg().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "dispatch.TaskResult.error_msg");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_error_msg(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:dispatch.TaskResult)
+  return target;
+}
+
+size_t TaskResult::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:dispatch.TaskResult)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string error_msg = 4;
+  if (!this->_internal_error_msg().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_error_msg());
+  }
+
+  // .dispatch.MsgHeader header = 1;
+  if (this->_internal_has_header()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.header_);
+  }
+
+  // .dispatch.TaskType task_type = 2;
+  if (this->_internal_task_type() != 0) {
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_task_type());
+  }
+
+  // int32 error_code = 3;
+  if (this->_internal_error_code() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_error_code());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData TaskResult::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    TaskResult::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*TaskResult::GetClassData() const { return &_class_data_; }
+
+
+void TaskResult::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<TaskResult*>(&to_msg);
+  auto& from = static_cast<const TaskResult&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dispatch.TaskResult)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_error_msg().empty()) {
+    _this->_internal_set_error_msg(from._internal_error_msg());
+  }
+  if (from._internal_has_header()) {
+    _this->_internal_mutable_header()->::dispatch::MsgHeader::MergeFrom(
+        from._internal_header());
+  }
+  if (from._internal_task_type() != 0) {
+    _this->_internal_set_task_type(from._internal_task_type());
+  }
+  if (from._internal_error_code() != 0) {
+    _this->_internal_set_error_code(from._internal_error_code());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void TaskResult::CopyFrom(const TaskResult& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dispatch.TaskResult)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TaskResult::IsInitialized() const {
+  return true;
+}
+
+void TaskResult::InternalSwap(TaskResult* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.error_msg_, lhs_arena,
+      &other->_impl_.error_msg_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(TaskResult, _impl_.error_code_)
+      + sizeof(TaskResult::_impl_.error_code_)
+      - PROTOBUF_FIELD_OFFSET(TaskResult, _impl_.header_)>(
+          reinterpret_cast<char*>(&_impl_.header_),
+          reinterpret_cast<char*>(&other->_impl_.header_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata TaskResult::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
+      file_level_metadata_MQTT_5fCommunication_2eproto[20]);
+}
+
+// ===================================================================
+
 class EmergencyBrake::_Internal {
  public:
   static const ::dispatch::MsgHeader& header(const EmergencyBrake* msg);
@@ -5738,7 +6060,7 @@ void EmergencyBrake::InternalSwap(EmergencyBrake* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata EmergencyBrake::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[20]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[21]);
 }
 
 // ===================================================================
@@ -5931,7 +6253,7 @@ void Heartbeat::InternalSwap(Heartbeat* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Heartbeat::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[21]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[22]);
 }
 
 // ===================================================================
@@ -6124,7 +6446,7 @@ void HeartbeatACK::InternalSwap(HeartbeatACK* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata HeartbeatACK::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[22]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[23]);
 }
 
 // ===================================================================
@@ -6431,7 +6753,7 @@ void FaultInformation::InternalSwap(FaultInformation* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata FaultInformation::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[23]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[24]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -6516,6 +6838,10 @@ Arena::CreateMaybeMessage< ::dispatch::ActionResponse >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::dispatch::TaskRequest*
 Arena::CreateMaybeMessage< ::dispatch::TaskRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::dispatch::TaskRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::dispatch::TaskResult*
+Arena::CreateMaybeMessage< ::dispatch::TaskResult >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::dispatch::TaskResult >(arena);
 }
 template<> PROTOBUF_NOINLINE ::dispatch::EmergencyBrake*
 Arena::CreateMaybeMessage< ::dispatch::EmergencyBrake >(Arena* arena) {
