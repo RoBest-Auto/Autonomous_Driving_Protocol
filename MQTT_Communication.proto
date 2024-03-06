@@ -78,6 +78,14 @@ message Multiple_goal {
     repeated PoseStamped pose = 1;
 }
 
+
+//消息通用头部
+message MsgHeader
+{
+    uint64 timestamp = 1;  //时间戳精确的毫秒
+    uint32 msg_id = 2;     //消息Id
+}
+
 //动作类型
 enum ActionType
 {
@@ -85,6 +93,51 @@ enum ActionType
     Stop = 1;           //停车
     Parking = 2;        //泊车
 }
+
+//任务类型
+enum TaskType
+{
+    Meeting = 0;    //会车
+    Load = 1;       //上料
+    Unload = 2;     //卸料
+}
+
+//工作状态
+enum WorkingState
+{
+    Waiting = 0;     //等待
+    Executing = 1;   //执行中
+    Ending = 2;      //结束
+    Exception = 3;   //异常
+}
+
+//驾驶模式
+message DrivingMode
+{
+    
+}
+
+//故障类型
+enum FaultType
+{
+    VehicleFault = 0;                   //车身故障
+    AutonomousDrivingFault = 1;         //自驾系统故障
+    RemoteDrivingFault = 2;             //远程驾驶系统故障
+    CommunicationSystemFault = 3;       //通信系统故障
+    LocalizaionSystemFault = 4;         //定位系统故障
+}
+
+
+//车辆信息
+message VehicleInfo
+{
+    MsgHeader header = 1;   //消息头部
+    Pose pose = 2;          //车辆位置
+    Twist twist = 3;        //车辆速度
+
+
+}
+
 
 //执行动作
 message ActionRequest
@@ -101,5 +154,37 @@ message ActionResponse
     int32 error_code = 1;
     string error_msg = 2;
 }
+
+//紧急制动
+message EmergencyBrake
+{
+    MsgHeader header = 1;   //消息头部
+    bool valid = 2;  //true 生效 false 取消
+}
+
+//心跳消息
+message Heartbeat
+{
+    MsgHeader header = 1;   //消息头部
+}
+
+//心跳消息ACK
+message HeartbeatACK
+{
+    MsgHeader header = 1;   //消息头部
+}
+
+
+//故障信息
+message FaultInformation
+{
+    MsgHeader header = 1;
+    FaultType type = 2;     //故障类型
+    uint32 fault_code = 3;  //故障码
+    string fault_str = 4;   //故障描述
+}
+
+
+
 
 
