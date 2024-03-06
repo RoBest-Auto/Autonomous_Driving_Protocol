@@ -103,24 +103,40 @@ enum ActionType
 //任务类型
 enum TaskType
 {
-    Meeting = 0;    //会车
-    Load = 1;       //上料
-    Unload = 2;     //卸料
+    LoadUnit = 0;       //上料
+    UnloadUnit = 1;     //卸料
 }
 
-//工作状态
-enum WorkingState
+
+//车辆作业状态
+enum VehicleJobState
 {
-    Waiting = 0;     //等待
-    Executing = 1;   //执行中
-    Ending = 2;      //结束
-    Exception = 3;   //异常
+    Offline = 0;        //车辆离线
+    Idle = 1;           //车辆空闲
+    EmptyTransport = 2;     //空车运输
+    HeavyTransport = 3;     //重车运输
+    WaitingLoad = 4;        //等待上料
+    LoadingUnit = 5;        //上料中
+    WaitingUnload = 6;      //等待卸料
+    UnloadingUnit = 7;      //卸料中
 }
 
 //驾驶模式
-message DrivingMode
+enum DrivingMode
 {
-    
+    LocalDrivingMode = 0;    //本地驾驶
+    TelecontrolMode = 1;    //遥控模式
+    RemoteMode = 2;         //远程模式
+    AutoMode = 3;           //自动模式
+}
+
+//运动状态
+enum VehicleMotionState
+{
+    StationaryState = 0;            //静止
+    ForwardState = 1;               //前进
+    BackState = 2;                  //后退
+    UnknownMotionState = 3;         //未知
 }
 
 //故障类型
@@ -140,8 +156,8 @@ message VehicleInfo
     MsgHeader header = 1;   //消息头部
     Pose pose = 2;          //车辆位置
     Twist twist = 3;        //车辆速度
-
-
+    VehicleMotionState motion = 4;   //运动状态
+    DrivingMode driving_mode = 5;    //驾驶模式
 }
 
 
@@ -163,6 +179,14 @@ message ActionResponse
     string error_msg = 2;
 }
 
+//车辆任务
+message TaskRequest
+{
+    MsgHeader header = 1;
+    TaskType task_type = 2;     //任务类型 上料 卸料
+    uint32 area_id = 3;         //位置id
+}
+
 //紧急制动
 message EmergencyBrake
 {
@@ -173,13 +197,13 @@ message EmergencyBrake
 //心跳消息
 message Heartbeat
 {
-    MsgHeader header = 1;   //消息头部
+    MsgHeader header = 1;
 }
 
 //心跳消息ACK
 message HeartbeatACK
 {
-    MsgHeader header = 1;   //消息头部
+    MsgHeader header = 1;
 }
 
 
