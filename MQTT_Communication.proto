@@ -54,14 +54,17 @@ message Twist {
 
 /* enabled data */
 // 反馈信息：当前位置
+// car/status/current_pose
 message Current_pose {
     Pose pose = 1;
 }
 // 反馈信息：当前速度
+// car/status/current_twist
 message Current_twist {
     Twist twist = 1;
 }
 // 下发信息：目标位置
+// platform/vehicle/goal_pose
 message Goal_pose {
     Pose pose = 1;
 }
@@ -70,15 +73,18 @@ message Current_path {
     repeated Pose pose = 1;
 }
 // 下发信息：指令速度
+// platform/vehicle/Goal_twist
 message Goal_twist {
     Twist twist = 1;
 }
 // 下发信息：多目标列表
+// platform/task/multiple_goal_pose
 message Multiple_goal {
     repeated PoseStamped pose = 1;
 }
 
 //动作类型
+// platform/vehicle/car_action_type
 enum ActionType
 {
     GoForward = 0;      //行进
@@ -87,6 +93,7 @@ enum ActionType
 }
 
 //执行动作
+// platform/vehicle/car_action_type
 message ActionRequest
 {
     ActionType action_type = 1;  //动作类型
@@ -96,6 +103,7 @@ message ActionRequest
 }
 
 //执行动作响应
+// car/status/actionresponse
 message ActionResponse
 {
     int32 error_code = 1;
