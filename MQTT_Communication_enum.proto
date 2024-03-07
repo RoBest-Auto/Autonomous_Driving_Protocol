@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package dispatch;
+
+
+//动作类型
+enum ActionType
+{
+    GoForward = 0;      //行进
+    Stop = 1;           //停车
+    Parking = 2;        //泊车
+}
+
+//任务类型
+enum TaskType
+{
+    LoadUnit = 0;       //上料
+    UnloadUnit = 1;     //卸料
+}
+
+
+//车辆作业状态
+enum VehicleJobState
+{
+    Offline = 0;        //车辆离线
+    Idle = 1;           //车辆空闲
+    EmptyTransport = 2;     //空车运输
+    HeavyTransport = 3;     //重车运输
+    WaitingLoad = 4;        //等待上料
+    LoadingUnit = 5;        //上料中
+    WaitingUnload = 6;      //等待卸料
+    UnloadingUnit = 7;      //卸料中
+}
+
+//驾驶模式
+enum DrivingMode
+{
+    LocalDrivingMode = 0;    //本地驾驶
+    TelecontrolMode = 1;    //遥控模式
+    RemoteMode = 2;         //远程模式
+    AutoMode = 3;           //自动模式
+}
+
+//运动状态
+enum VehicleMotionState
+{
+    StationaryState = 0;            //静止
+    ForwardState = 1;               //前进
+    BackState = 2;                  //后退
+    UnknownMotionState = 3;         //未知
+}
+
+//故障类型
+enum FaultType
+{
+    VehicleFault = 0;                   //车身故障
+    AutonomousDrivingFault = 1;         //自驾系统故障
+    RemoteDrivingFault = 2;             //远程驾驶系统故障
+    CommunicationSystemFault = 3;       //通信系统故障
+    LocalizaionSystemFault = 4;         //定位系统故障
+}

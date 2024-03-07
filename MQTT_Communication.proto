@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "MQTT_Communication_enum.proto";
+
 package dispatch;
 /*  base types */
 
@@ -54,17 +56,15 @@ message Twist {
 
 /* enabled data */
 // 反馈信息：当前位置
-// car/status/current_pose
+// platform/vehicle/position/vehicle_id
 message Current_pose {
     Pose pose = 1;
 }
 // 反馈信息：当前速度
-// car/status/current_twist
 message Current_twist {
     Twist twist = 1;
 }
 // 下发信息：目标位置
-// platform/vehicle/goal_pose
 message Goal_pose {
     Pose pose = 1;
 }
@@ -73,12 +73,10 @@ message Current_path {
     repeated Pose pose = 1;
 }
 // 下发信息：指令速度
-// platform/vehicle/Goal_twist
 message Goal_twist {
     Twist twist = 1;
 }
 // 下发信息：多目标列表
-// platform/task/multiple_goal_pose
 message Multiple_goal {
     repeated PoseStamped pose = 1;
 }
@@ -91,66 +89,9 @@ message MsgHeader
     uint32 msg_id = 2;     //消息Id
 }
 
-//动作类型
-// platform/vehicle/car_action_type
-enum ActionType
-{
-    GoForward = 0;      //行进
-    Stop = 1;           //停车
-    Parking = 2;        //泊车
-}
-
-//任务类型
-enum TaskType
-{
-    LoadUnit = 0;       //上料
-    UnloadUnit = 1;     //卸料
-}
-
-
-//车辆作业状态
-enum VehicleJobState
-{
-    Offline = 0;        //车辆离线
-    Idle = 1;           //车辆空闲
-    EmptyTransport = 2;     //空车运输
-    HeavyTransport = 3;     //重车运输
-    WaitingLoad = 4;        //等待上料
-    LoadingUnit = 5;        //上料中
-    WaitingUnload = 6;      //等待卸料
-    UnloadingUnit = 7;      //卸料中
-}
-
-//驾驶模式
-enum DrivingMode
-{
-    LocalDrivingMode = 0;    //本地驾驶
-    TelecontrolMode = 1;    //遥控模式
-    RemoteMode = 2;         //远程模式
-    AutoMode = 3;           //自动模式
-}
-
-//运动状态
-enum VehicleMotionState
-{
-    StationaryState = 0;            //静止
-    ForwardState = 1;               //前进
-    BackState = 2;                  //后退
-    UnknownMotionState = 3;         //未知
-}
-
-//故障类型
-enum FaultType
-{
-    VehicleFault = 0;                   //车身故障
-    AutonomousDrivingFault = 1;         //自驾系统故障
-    RemoteDrivingFault = 2;             //远程驾驶系统故障
-    CommunicationSystemFault = 3;       //通信系统故障
-    LocalizaionSystemFault = 4;         //定位系统故障
-}
-
 
 //车辆信息
+//platform/vehicle/info/vehicle_id
 message VehicleInfo
 {
     MsgHeader header = 1;   //消息头部
@@ -162,24 +103,27 @@ message VehicleInfo
 
 
 //执行动作
-// platform/vehicle/car_action_type
+//platform/action/request/vehicle_id
 message ActionRequest
 {
-    ActionType action_type = 1;  //动作类型
-    Current_path path = 2;      //路径
-    Goal_pose goal = 3;         //目标位置
-    uint32 park_id = 4;         //车位id
+    MsgHeader header = 1;
+    ActionType action_type = 2;  //动作类型
+    Current_path path = 3;      //路径
+    Goal_pose goal = 4;         //目标位置
+    uint32 park_id = 5;         //车位id
 }
 
 //执行动作响应
-// car/status/actionresponse
+//platform/action/response/vehicle_id
 message ActionResponse
 {
-    int32 error_code = 1;
-    string error_msg = 2;
+    MsgHeader header = 1;
+    int32 error_code = 2;
+    string error_msg = 3;
 }
 
 //车辆任务
+//platform/task/request/vehicle_id
 message TaskRequest
 {
     MsgHeader header = 1;
@@ -187,7 +131,18 @@ message TaskRequest
     uint32 area_id = 3;         //位置id
 }
 
+//任务结果
+//platform/task/response/vehicle_id
+message TaskResult 
+{
+    MsgHeader header = 1;
+    TaskType task_type = 2;     //任务类型 上料 卸料
+    int32 error_code = 3;       //任务结果 0 成功
+    string error_msg = 4;
+}
+
 //紧急制动
+//platform/vehicle/emergencybrake/vehicle_id
 message EmergencyBrake
 {
     MsgHeader header = 1;   //消息头部
@@ -198,6 +153,7 @@ message EmergencyBrake
 message Heartbeat
 {
     MsgHeader header = 1;
+    //empty
 }
 
 //心跳消息ACK
@@ -208,6 +164,7 @@ message HeartbeatACK
 
 
 //故障信息
+//platform/vehicle/fault/vehicle_id
 message FaultInformation
 {
     MsgHeader header = 1;
