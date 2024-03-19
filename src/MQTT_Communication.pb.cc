@@ -203,6 +203,20 @@ struct Current_pathDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Current_pathDefaultTypeInternal _Current_path_default_instance_;
+PROTOBUF_CONSTEXPR Upload_path_with_id::Upload_path_with_id(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.upload_path_)*/nullptr
+  , /*decltype(_impl_.path_id_)*/0u
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct Upload_path_with_idDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Upload_path_with_idDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Upload_path_with_idDefaultTypeInternal() {}
+  union {
+    Upload_path_with_id _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Upload_path_with_idDefaultTypeInternal _Upload_path_with_id_default_instance_;
 PROTOBUF_CONSTEXPR Goal_twist::Goal_twist(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.twist_)*/nullptr
@@ -380,7 +394,7 @@ struct FaultInformationDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 FaultInformationDefaultTypeInternal _FaultInformation_default_instance_;
 }  // namespace dispatch
-static ::_pb::Metadata file_level_metadata_MQTT_5fCommunication_2eproto[25];
+static ::_pb::Metadata file_level_metadata_MQTT_5fCommunication_2eproto[26];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_MQTT_5fCommunication_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_MQTT_5fCommunication_2eproto = nullptr;
 
@@ -489,6 +503,14 @@ const uint32_t TableStruct_MQTT_5fCommunication_2eproto::offsets[] PROTOBUF_SECT
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::dispatch::Current_path, _impl_.pose_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::dispatch::Upload_path_with_id, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::dispatch::Upload_path_with_id, _impl_.path_id_),
+  PROTOBUF_FIELD_OFFSET(::dispatch::Upload_path_with_id, _impl_.upload_path_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::dispatch::Goal_twist, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -608,18 +630,19 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 83, -1, -1, sizeof(::dispatch::Current_twist)},
   { 90, -1, -1, sizeof(::dispatch::Goal_pose)},
   { 97, -1, -1, sizeof(::dispatch::Current_path)},
-  { 104, -1, -1, sizeof(::dispatch::Goal_twist)},
-  { 111, -1, -1, sizeof(::dispatch::Multiple_goal)},
-  { 118, -1, -1, sizeof(::dispatch::MsgHeader)},
-  { 126, -1, -1, sizeof(::dispatch::VehicleInfo)},
-  { 137, -1, -1, sizeof(::dispatch::ActionRequest)},
-  { 148, -1, -1, sizeof(::dispatch::ActionResponse)},
-  { 157, -1, -1, sizeof(::dispatch::TaskRequest)},
-  { 166, -1, -1, sizeof(::dispatch::TaskResult)},
-  { 176, -1, -1, sizeof(::dispatch::EmergencyBrake)},
-  { 184, -1, -1, sizeof(::dispatch::Heartbeat)},
-  { 191, -1, -1, sizeof(::dispatch::HeartbeatACK)},
-  { 198, -1, -1, sizeof(::dispatch::FaultInformation)},
+  { 104, -1, -1, sizeof(::dispatch::Upload_path_with_id)},
+  { 112, -1, -1, sizeof(::dispatch::Goal_twist)},
+  { 119, -1, -1, sizeof(::dispatch::Multiple_goal)},
+  { 126, -1, -1, sizeof(::dispatch::MsgHeader)},
+  { 134, -1, -1, sizeof(::dispatch::VehicleInfo)},
+  { 145, -1, -1, sizeof(::dispatch::ActionRequest)},
+  { 156, -1, -1, sizeof(::dispatch::ActionResponse)},
+  { 165, -1, -1, sizeof(::dispatch::TaskRequest)},
+  { 174, -1, -1, sizeof(::dispatch::TaskResult)},
+  { 184, -1, -1, sizeof(::dispatch::EmergencyBrake)},
+  { 192, -1, -1, sizeof(::dispatch::Heartbeat)},
+  { 199, -1, -1, sizeof(::dispatch::HeartbeatACK)},
+  { 206, -1, -1, sizeof(::dispatch::FaultInformation)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -636,6 +659,7 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::dispatch::_Current_twist_default_instance_._instance,
   &::dispatch::_Goal_pose_default_instance_._instance,
   &::dispatch::_Current_path_default_instance_._instance,
+  &::dispatch::_Upload_path_with_id_default_instance_._instance,
   &::dispatch::_Goal_twist_default_instance_._instance,
   &::dispatch::_Multiple_goal_default_instance_._instance,
   &::dispatch::_MsgHeader_default_instance_._instance,
@@ -671,45 +695,47 @@ const char descriptor_table_protodef_MQTT_5fCommunication_2eproto[] PROTOBUF_SEC
   "urrent_twist\022\036\n\005twist\030\001 \001(\0132\017.dispatch.T"
   "wist\")\n\tGoal_pose\022\034\n\004pose\030\001 \001(\0132\016.dispat"
   "ch.Pose\",\n\014Current_path\022\034\n\004pose\030\001 \003(\0132\016."
-  "dispatch.Pose\",\n\nGoal_twist\022\036\n\005twist\030\001 \001"
-  "(\0132\017.dispatch.Twist\"4\n\rMultiple_goal\022#\n\004"
-  "pose\030\001 \003(\0132\025.dispatch.PoseStamped\".\n\tMsg"
-  "Header\022\021\n\ttimestamp\030\001 \001(\004\022\016\n\006msg_id\030\002 \001("
-  "\r\"\313\001\n\013VehicleInfo\022#\n\006header\030\001 \001(\0132\023.disp"
-  "atch.MsgHeader\022\034\n\004pose\030\002 \001(\0132\016.dispatch."
-  "Pose\022\036\n\005twist\030\003 \001(\0132\017.dispatch.Twist\022,\n\006"
-  "motion\030\004 \001(\0162\034.dispatch.VehicleMotionSta"
-  "te\022+\n\014driving_mode\030\005 \001(\0162\025.dispatch.Driv"
-  "ingMode\"\271\001\n\rActionRequest\022#\n\006header\030\001 \001("
-  "\0132\023.dispatch.MsgHeader\022)\n\013action_type\030\002 "
-  "\001(\0162\024.dispatch.ActionType\022$\n\004path\030\003 \001(\0132"
-  "\026.dispatch.Current_path\022!\n\004goal\030\004 \001(\0132\023."
-  "dispatch.Goal_pose\022\017\n\007park_id\030\005 \001(\r\"\\\n\016A"
-  "ctionResponse\022#\n\006header\030\001 \001(\0132\023.dispatch"
-  ".MsgHeader\022\022\n\nerror_code\030\002 \001(\005\022\021\n\terror_"
-  "msg\030\003 \001(\t\"j\n\013TaskRequest\022#\n\006header\030\001 \001(\013"
-  "2\023.dispatch.MsgHeader\022%\n\ttask_type\030\002 \001(\016"
-  "2\022.dispatch.TaskType\022\017\n\007area_id\030\003 \001(\r\"\177\n"
-  "\nTaskResult\022#\n\006header\030\001 \001(\0132\023.dispatch.M"
-  "sgHeader\022%\n\ttask_type\030\002 \001(\0162\022.dispatch.T"
-  "askType\022\022\n\nerror_code\030\003 \001(\005\022\021\n\terror_msg"
-  "\030\004 \001(\t\"D\n\016EmergencyBrake\022#\n\006header\030\001 \001(\013"
-  "2\023.dispatch.MsgHeader\022\r\n\005valid\030\002 \001(\010\"0\n\t"
-  "Heartbeat\022#\n\006header\030\001 \001(\0132\023.dispatch.Msg"
-  "Header\"3\n\014HeartbeatACK\022#\n\006header\030\001 \001(\0132\023"
-  ".dispatch.MsgHeader\"\201\001\n\020FaultInformation"
-  "\022#\n\006header\030\001 \001(\0132\023.dispatch.MsgHeader\022!\n"
-  "\004type\030\002 \001(\0162\023.dispatch.FaultType\022\022\n\nfaul"
-  "t_code\030\003 \001(\r\022\021\n\tfault_str\030\004 \001(\tb\006proto3"
+  "dispatch.Pose\"K\n\023Upload_path_with_id\022\017\n\007"
+  "path_id\030\001 \001(\r\022#\n\013upload_path\030\002 \001(\0132\016.dis"
+  "patch.Path\",\n\nGoal_twist\022\036\n\005twist\030\001 \001(\0132"
+  "\017.dispatch.Twist\"4\n\rMultiple_goal\022#\n\004pos"
+  "e\030\001 \003(\0132\025.dispatch.PoseStamped\".\n\tMsgHea"
+  "der\022\021\n\ttimestamp\030\001 \001(\004\022\016\n\006msg_id\030\002 \001(\r\"\313"
+  "\001\n\013VehicleInfo\022#\n\006header\030\001 \001(\0132\023.dispatc"
+  "h.MsgHeader\022\034\n\004pose\030\002 \001(\0132\016.dispatch.Pos"
+  "e\022\036\n\005twist\030\003 \001(\0132\017.dispatch.Twist\022,\n\006mot"
+  "ion\030\004 \001(\0162\034.dispatch.VehicleMotionState\022"
+  "+\n\014driving_mode\030\005 \001(\0162\025.dispatch.Driving"
+  "Mode\"\271\001\n\rActionRequest\022#\n\006header\030\001 \001(\0132\023"
+  ".dispatch.MsgHeader\022)\n\013action_type\030\002 \001(\016"
+  "2\024.dispatch.ActionType\022$\n\004path\030\003 \001(\0132\026.d"
+  "ispatch.Current_path\022!\n\004goal\030\004 \001(\0132\023.dis"
+  "patch.Goal_pose\022\017\n\007park_id\030\005 \001(\r\"\\\n\016Acti"
+  "onResponse\022#\n\006header\030\001 \001(\0132\023.dispatch.Ms"
+  "gHeader\022\022\n\nerror_code\030\002 \001(\005\022\021\n\terror_msg"
+  "\030\003 \001(\t\"j\n\013TaskRequest\022#\n\006header\030\001 \001(\0132\023."
+  "dispatch.MsgHeader\022%\n\ttask_type\030\002 \001(\0162\022."
+  "dispatch.TaskType\022\017\n\007area_id\030\003 \001(\r\"\177\n\nTa"
+  "skResult\022#\n\006header\030\001 \001(\0132\023.dispatch.MsgH"
+  "eader\022%\n\ttask_type\030\002 \001(\0162\022.dispatch.Task"
+  "Type\022\022\n\nerror_code\030\003 \001(\005\022\021\n\terror_msg\030\004 "
+  "\001(\t\"D\n\016EmergencyBrake\022#\n\006header\030\001 \001(\0132\023."
+  "dispatch.MsgHeader\022\r\n\005valid\030\002 \001(\010\"0\n\tHea"
+  "rtbeat\022#\n\006header\030\001 \001(\0132\023.dispatch.MsgHea"
+  "der\"3\n\014HeartbeatACK\022#\n\006header\030\001 \001(\0132\023.di"
+  "spatch.MsgHeader\"\201\001\n\020FaultInformation\022#\n"
+  "\006header\030\001 \001(\0132\023.dispatch.MsgHeader\022!\n\004ty"
+  "pe\030\002 \001(\0162\023.dispatch.FaultType\022\022\n\nfault_c"
+  "ode\030\003 \001(\r\022\021\n\tfault_str\030\004 \001(\tb\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_MQTT_5fCommunication_2eproto_deps[1] = {
   &::descriptor_table_MQTT_5fCommunication_5fenum_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_MQTT_5fCommunication_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_MQTT_5fCommunication_2eproto = {
-    false, false, 1999, descriptor_table_protodef_MQTT_5fCommunication_2eproto,
+    false, false, 2076, descriptor_table_protodef_MQTT_5fCommunication_2eproto,
     "MQTT_Communication.proto",
-    &descriptor_table_MQTT_5fCommunication_2eproto_once, descriptor_table_MQTT_5fCommunication_2eproto_deps, 1, 25,
+    &descriptor_table_MQTT_5fCommunication_2eproto_once, descriptor_table_MQTT_5fCommunication_2eproto_deps, 1, 26,
     schemas, file_default_instances, TableStruct_MQTT_5fCommunication_2eproto::offsets,
     file_level_metadata_MQTT_5fCommunication_2eproto, file_level_enum_descriptors_MQTT_5fCommunication_2eproto,
     file_level_service_descriptors_MQTT_5fCommunication_2eproto,
@@ -3737,6 +3763,230 @@ void Current_path::InternalSwap(Current_path* other) {
 
 // ===================================================================
 
+class Upload_path_with_id::_Internal {
+ public:
+  static const ::dispatch::Path& upload_path(const Upload_path_with_id* msg);
+};
+
+const ::dispatch::Path&
+Upload_path_with_id::_Internal::upload_path(const Upload_path_with_id* msg) {
+  return *msg->_impl_.upload_path_;
+}
+Upload_path_with_id::Upload_path_with_id(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:dispatch.Upload_path_with_id)
+}
+Upload_path_with_id::Upload_path_with_id(const Upload_path_with_id& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Upload_path_with_id* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.upload_path_){nullptr}
+    , decltype(_impl_.path_id_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_upload_path()) {
+    _this->_impl_.upload_path_ = new ::dispatch::Path(*from._impl_.upload_path_);
+  }
+  _this->_impl_.path_id_ = from._impl_.path_id_;
+  // @@protoc_insertion_point(copy_constructor:dispatch.Upload_path_with_id)
+}
+
+inline void Upload_path_with_id::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.upload_path_){nullptr}
+    , decltype(_impl_.path_id_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+Upload_path_with_id::~Upload_path_with_id() {
+  // @@protoc_insertion_point(destructor:dispatch.Upload_path_with_id)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void Upload_path_with_id::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.upload_path_;
+}
+
+void Upload_path_with_id::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void Upload_path_with_id::Clear() {
+// @@protoc_insertion_point(message_clear_start:dispatch.Upload_path_with_id)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && _impl_.upload_path_ != nullptr) {
+    delete _impl_.upload_path_;
+  }
+  _impl_.upload_path_ = nullptr;
+  _impl_.path_id_ = 0u;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Upload_path_with_id::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint32 path_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.path_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .dispatch.Path upload_path = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_upload_path(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Upload_path_with_id::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dispatch.Upload_path_with_id)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 path_id = 1;
+  if (this->_internal_path_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_path_id(), target);
+  }
+
+  // .dispatch.Path upload_path = 2;
+  if (this->_internal_has_upload_path()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::upload_path(this),
+        _Internal::upload_path(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:dispatch.Upload_path_with_id)
+  return target;
+}
+
+size_t Upload_path_with_id::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:dispatch.Upload_path_with_id)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .dispatch.Path upload_path = 2;
+  if (this->_internal_has_upload_path()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.upload_path_);
+  }
+
+  // uint32 path_id = 1;
+  if (this->_internal_path_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_path_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Upload_path_with_id::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    Upload_path_with_id::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Upload_path_with_id::GetClassData() const { return &_class_data_; }
+
+
+void Upload_path_with_id::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<Upload_path_with_id*>(&to_msg);
+  auto& from = static_cast<const Upload_path_with_id&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dispatch.Upload_path_with_id)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_upload_path()) {
+    _this->_internal_mutable_upload_path()->::dispatch::Path::MergeFrom(
+        from._internal_upload_path());
+  }
+  if (from._internal_path_id() != 0) {
+    _this->_internal_set_path_id(from._internal_path_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Upload_path_with_id::CopyFrom(const Upload_path_with_id& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dispatch.Upload_path_with_id)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Upload_path_with_id::IsInitialized() const {
+  return true;
+}
+
+void Upload_path_with_id::InternalSwap(Upload_path_with_id* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Upload_path_with_id, _impl_.path_id_)
+      + sizeof(Upload_path_with_id::_impl_.path_id_)
+      - PROTOBUF_FIELD_OFFSET(Upload_path_with_id, _impl_.upload_path_)>(
+          reinterpret_cast<char*>(&_impl_.upload_path_),
+          reinterpret_cast<char*>(&other->_impl_.upload_path_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Upload_path_with_id::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
+      file_level_metadata_MQTT_5fCommunication_2eproto[13]);
+}
+
+// ===================================================================
+
 class Goal_twist::_Internal {
  public:
   static const ::dispatch::Twist& twist(const Goal_twist* msg);
@@ -3925,7 +4175,7 @@ void Goal_twist::InternalSwap(Goal_twist* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Goal_twist::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[13]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[14]);
 }
 
 // ===================================================================
@@ -4110,7 +4360,7 @@ void Multiple_goal::InternalSwap(Multiple_goal* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Multiple_goal::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[14]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[15]);
 }
 
 // ===================================================================
@@ -4321,7 +4571,7 @@ void MsgHeader::InternalSwap(MsgHeader* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata MsgHeader::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[15]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[16]);
 }
 
 // ===================================================================
@@ -4661,7 +4911,7 @@ void VehicleInfo::InternalSwap(VehicleInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata VehicleInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[16]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[17]);
 }
 
 // ===================================================================
@@ -4998,7 +5248,7 @@ void ActionRequest::InternalSwap(ActionRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ActionRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[17]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[18]);
 }
 
 // ===================================================================
@@ -5274,7 +5524,7 @@ void ActionResponse::InternalSwap(ActionResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ActionResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[18]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[19]);
 }
 
 // ===================================================================
@@ -5529,7 +5779,7 @@ void TaskRequest::InternalSwap(TaskRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TaskRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[19]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[20]);
 }
 
 // ===================================================================
@@ -5836,7 +6086,7 @@ void TaskResult::InternalSwap(TaskResult* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TaskResult::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[20]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[21]);
 }
 
 // ===================================================================
@@ -6060,7 +6310,7 @@ void EmergencyBrake::InternalSwap(EmergencyBrake* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata EmergencyBrake::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[21]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[22]);
 }
 
 // ===================================================================
@@ -6253,7 +6503,7 @@ void Heartbeat::InternalSwap(Heartbeat* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Heartbeat::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[22]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[23]);
 }
 
 // ===================================================================
@@ -6446,7 +6696,7 @@ void HeartbeatACK::InternalSwap(HeartbeatACK* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata HeartbeatACK::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[23]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[24]);
 }
 
 // ===================================================================
@@ -6753,7 +7003,7 @@ void FaultInformation::InternalSwap(FaultInformation* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata FaultInformation::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_MQTT_5fCommunication_2eproto_getter, &descriptor_table_MQTT_5fCommunication_2eproto_once,
-      file_level_metadata_MQTT_5fCommunication_2eproto[24]);
+      file_level_metadata_MQTT_5fCommunication_2eproto[25]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -6810,6 +7060,10 @@ Arena::CreateMaybeMessage< ::dispatch::Goal_pose >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::dispatch::Current_path*
 Arena::CreateMaybeMessage< ::dispatch::Current_path >(Arena* arena) {
   return Arena::CreateMessageInternal< ::dispatch::Current_path >(arena);
+}
+template<> PROTOBUF_NOINLINE ::dispatch::Upload_path_with_id*
+Arena::CreateMaybeMessage< ::dispatch::Upload_path_with_id >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::dispatch::Upload_path_with_id >(arena);
 }
 template<> PROTOBUF_NOINLINE ::dispatch::Goal_twist*
 Arena::CreateMaybeMessage< ::dispatch::Goal_twist >(Arena* arena) {

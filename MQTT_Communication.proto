@@ -75,6 +75,12 @@ message Goal_pose {
 message Current_path {
     repeated Pose pose = 1;
 }
+// 反馈信息：带编号信息的路线
+// platform/vehicle/upload_path_with_id/vehicle_id
+message Upload_path_with_id{
+    uint32 path_id = 1;
+    Path upload_path = 2;
+}
 // 下发信息：指令速度
 // platform/vehicle/goal_twist/vehicle_id
 message Goal_twist {

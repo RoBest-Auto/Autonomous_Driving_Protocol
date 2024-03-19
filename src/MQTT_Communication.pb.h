@@ -115,6 +115,9 @@ extern TimeDefaultTypeInternal _Time_default_instance_;
 class Twist;
 struct TwistDefaultTypeInternal;
 extern TwistDefaultTypeInternal _Twist_default_instance_;
+class Upload_path_with_id;
+struct Upload_path_with_idDefaultTypeInternal;
+extern Upload_path_with_idDefaultTypeInternal _Upload_path_with_id_default_instance_;
 class Vector3;
 struct Vector3DefaultTypeInternal;
 extern Vector3DefaultTypeInternal _Vector3_default_instance_;
@@ -146,6 +149,7 @@ template<> ::dispatch::TaskRequest* Arena::CreateMaybeMessage<::dispatch::TaskRe
 template<> ::dispatch::TaskResult* Arena::CreateMaybeMessage<::dispatch::TaskResult>(Arena*);
 template<> ::dispatch::Time* Arena::CreateMaybeMessage<::dispatch::Time>(Arena*);
 template<> ::dispatch::Twist* Arena::CreateMaybeMessage<::dispatch::Twist>(Arena*);
+template<> ::dispatch::Upload_path_with_id* Arena::CreateMaybeMessage<::dispatch::Upload_path_with_id>(Arena*);
 template<> ::dispatch::Vector3* Arena::CreateMaybeMessage<::dispatch::Vector3>(Arena*);
 template<> ::dispatch::VehicleInfo* Arena::CreateMaybeMessage<::dispatch::VehicleInfo>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -2342,6 +2346,174 @@ class Current_path final :
 };
 // -------------------------------------------------------------------
 
+class Upload_path_with_id final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:dispatch.Upload_path_with_id) */ {
+ public:
+  inline Upload_path_with_id() : Upload_path_with_id(nullptr) {}
+  ~Upload_path_with_id() override;
+  explicit PROTOBUF_CONSTEXPR Upload_path_with_id(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Upload_path_with_id(const Upload_path_with_id& from);
+  Upload_path_with_id(Upload_path_with_id&& from) noexcept
+    : Upload_path_with_id() {
+    *this = ::std::move(from);
+  }
+
+  inline Upload_path_with_id& operator=(const Upload_path_with_id& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Upload_path_with_id& operator=(Upload_path_with_id&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Upload_path_with_id& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Upload_path_with_id* internal_default_instance() {
+    return reinterpret_cast<const Upload_path_with_id*>(
+               &_Upload_path_with_id_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    13;
+
+  friend void swap(Upload_path_with_id& a, Upload_path_with_id& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Upload_path_with_id* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Upload_path_with_id* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Upload_path_with_id* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Upload_path_with_id>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Upload_path_with_id& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const Upload_path_with_id& from) {
+    Upload_path_with_id::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Upload_path_with_id* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "dispatch.Upload_path_with_id";
+  }
+  protected:
+  explicit Upload_path_with_id(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kUploadPathFieldNumber = 2,
+    kPathIdFieldNumber = 1,
+  };
+  // .dispatch.Path upload_path = 2;
+  bool has_upload_path() const;
+  private:
+  bool _internal_has_upload_path() const;
+  public:
+  void clear_upload_path();
+  const ::dispatch::Path& upload_path() const;
+  PROTOBUF_NODISCARD ::dispatch::Path* release_upload_path();
+  ::dispatch::Path* mutable_upload_path();
+  void set_allocated_upload_path(::dispatch::Path* upload_path);
+  private:
+  const ::dispatch::Path& _internal_upload_path() const;
+  ::dispatch::Path* _internal_mutable_upload_path();
+  public:
+  void unsafe_arena_set_allocated_upload_path(
+      ::dispatch::Path* upload_path);
+  ::dispatch::Path* unsafe_arena_release_upload_path();
+
+  // uint32 path_id = 1;
+  void clear_path_id();
+  uint32_t path_id() const;
+  void set_path_id(uint32_t value);
+  private:
+  uint32_t _internal_path_id() const;
+  void _internal_set_path_id(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:dispatch.Upload_path_with_id)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::dispatch::Path* upload_path_;
+    uint32_t path_id_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_MQTT_5fCommunication_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Goal_twist final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:dispatch.Goal_twist) */ {
  public:
@@ -2390,7 +2562,7 @@ class Goal_twist final :
                &_Goal_twist_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   friend void swap(Goal_twist& a, Goal_twist& b) {
     a.Swap(&b);
@@ -2547,7 +2719,7 @@ class Multiple_goal final :
                &_Multiple_goal_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
   friend void swap(Multiple_goal& a, Multiple_goal& b) {
     a.Swap(&b);
@@ -2704,7 +2876,7 @@ class MsgHeader final :
                &_MsgHeader_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    16;
 
   friend void swap(MsgHeader& a, MsgHeader& b) {
     a.Swap(&b);
@@ -2863,7 +3035,7 @@ class VehicleInfo final :
                &_VehicleInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    17;
 
   friend void swap(VehicleInfo& a, VehicleInfo& b) {
     a.Swap(&b);
@@ -3082,7 +3254,7 @@ class ActionRequest final :
                &_ActionRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    18;
 
   friend void swap(ActionRequest& a, ActionRequest& b) {
     a.Swap(&b);
@@ -3301,7 +3473,7 @@ class ActionResponse final :
                &_ActionResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    19;
 
   friend void swap(ActionResponse& a, ActionResponse& b) {
     a.Swap(&b);
@@ -3485,7 +3657,7 @@ class TaskRequest final :
                &_TaskRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    20;
 
   friend void swap(TaskRequest& a, TaskRequest& b) {
     a.Swap(&b);
@@ -3664,7 +3836,7 @@ class TaskResult final :
                &_TaskResult_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    21;
 
   friend void swap(TaskResult& a, TaskResult& b) {
     a.Swap(&b);
@@ -3859,7 +4031,7 @@ class EmergencyBrake final :
                &_EmergencyBrake_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    22;
 
   friend void swap(EmergencyBrake& a, EmergencyBrake& b) {
     a.Swap(&b);
@@ -4027,7 +4199,7 @@ class Heartbeat final :
                &_Heartbeat_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    23;
 
   friend void swap(Heartbeat& a, Heartbeat& b) {
     a.Swap(&b);
@@ -4184,7 +4356,7 @@ class HeartbeatACK final :
                &_HeartbeatACK_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    24;
 
   friend void swap(HeartbeatACK& a, HeartbeatACK& b) {
     a.Swap(&b);
@@ -4341,7 +4513,7 @@ class FaultInformation final :
                &_FaultInformation_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    25;
 
   friend void swap(FaultInformation& a, FaultInformation& b) {
     a.Swap(&b);
@@ -5903,6 +6075,120 @@ inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::dispatch::Pose >&
 Current_path::pose() const {
   // @@protoc_insertion_point(field_list:dispatch.Current_path.pose)
   return _impl_.pose_;
+}
+
+// -------------------------------------------------------------------
+
+// Upload_path_with_id
+
+// uint32 path_id = 1;
+inline void Upload_path_with_id::clear_path_id() {
+  _impl_.path_id_ = 0u;
+}
+inline uint32_t Upload_path_with_id::_internal_path_id() const {
+  return _impl_.path_id_;
+}
+inline uint32_t Upload_path_with_id::path_id() const {
+  // @@protoc_insertion_point(field_get:dispatch.Upload_path_with_id.path_id)
+  return _internal_path_id();
+}
+inline void Upload_path_with_id::_internal_set_path_id(uint32_t value) {
+  
+  _impl_.path_id_ = value;
+}
+inline void Upload_path_with_id::set_path_id(uint32_t value) {
+  _internal_set_path_id(value);
+  // @@protoc_insertion_point(field_set:dispatch.Upload_path_with_id.path_id)
+}
+
+// .dispatch.Path upload_path = 2;
+inline bool Upload_path_with_id::_internal_has_upload_path() const {
+  return this != internal_default_instance() && _impl_.upload_path_ != nullptr;
+}
+inline bool Upload_path_with_id::has_upload_path() const {
+  return _internal_has_upload_path();
+}
+inline void Upload_path_with_id::clear_upload_path() {
+  if (GetArenaForAllocation() == nullptr && _impl_.upload_path_ != nullptr) {
+    delete _impl_.upload_path_;
+  }
+  _impl_.upload_path_ = nullptr;
+}
+inline const ::dispatch::Path& Upload_path_with_id::_internal_upload_path() const {
+  const ::dispatch::Path* p = _impl_.upload_path_;
+  return p != nullptr ? *p : reinterpret_cast<const ::dispatch::Path&>(
+      ::dispatch::_Path_default_instance_);
+}
+inline const ::dispatch::Path& Upload_path_with_id::upload_path() const {
+  // @@protoc_insertion_point(field_get:dispatch.Upload_path_with_id.upload_path)
+  return _internal_upload_path();
+}
+inline void Upload_path_with_id::unsafe_arena_set_allocated_upload_path(
+    ::dispatch::Path* upload_path) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.upload_path_);
+  }
+  _impl_.upload_path_ = upload_path;
+  if (upload_path) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:dispatch.Upload_path_with_id.upload_path)
+}
+inline ::dispatch::Path* Upload_path_with_id::release_upload_path() {
+  
+  ::dispatch::Path* temp = _impl_.upload_path_;
+  _impl_.upload_path_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::dispatch::Path* Upload_path_with_id::unsafe_arena_release_upload_path() {
+  // @@protoc_insertion_point(field_release:dispatch.Upload_path_with_id.upload_path)
+  
+  ::dispatch::Path* temp = _impl_.upload_path_;
+  _impl_.upload_path_ = nullptr;
+  return temp;
+}
+inline ::dispatch::Path* Upload_path_with_id::_internal_mutable_upload_path() {
+  
+  if (_impl_.upload_path_ == nullptr) {
+    auto* p = CreateMaybeMessage<::dispatch::Path>(GetArenaForAllocation());
+    _impl_.upload_path_ = p;
+  }
+  return _impl_.upload_path_;
+}
+inline ::dispatch::Path* Upload_path_with_id::mutable_upload_path() {
+  ::dispatch::Path* _msg = _internal_mutable_upload_path();
+  // @@protoc_insertion_point(field_mutable:dispatch.Upload_path_with_id.upload_path)
+  return _msg;
+}
+inline void Upload_path_with_id::set_allocated_upload_path(::dispatch::Path* upload_path) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.upload_path_;
+  }
+  if (upload_path) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(upload_path);
+    if (message_arena != submessage_arena) {
+      upload_path = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, upload_path, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.upload_path_ = upload_path;
+  // @@protoc_insertion_point(field_set_allocated:dispatch.Upload_path_with_id.upload_path)
 }
 
 // -------------------------------------------------------------------
@@ -7686,6 +7972,8 @@ inline void FaultInformation::set_allocated_fault_str(std::string* fault_str) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
