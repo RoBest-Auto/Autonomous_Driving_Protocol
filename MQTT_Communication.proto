@@ -78,7 +78,7 @@ message Current_path {
 // 反馈信息：带编号信息的路线
 // platform/vehicle/upload_path_with_id/vehicle_id
 message Upload_path_with_id{
-    uint32 path_id = 1;
+    uint32 path_id = 1; // path_id必须为正并且小于2^31 - 1
     Path upload_path = 2;
 }
 // 下发信息：指令速度

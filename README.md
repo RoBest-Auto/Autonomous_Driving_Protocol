@@ -31,5 +31,6 @@ TODO
 
 ### warning
 
+- path_id必须为正并且小于2^31 - 1
 - 成员的float64类型使用double类型定义
 - Header中忽略了seq成员
